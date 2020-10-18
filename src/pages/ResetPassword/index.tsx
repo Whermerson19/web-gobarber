@@ -48,6 +48,7 @@ const ResetPassword: React.FC = () => {
 
         // resetar senha
 
+        const { password, password_confirmation } = data;
         const token = location.search.replace('?token=', '');
 
         if(!token)
@@ -55,8 +56,8 @@ const ResetPassword: React.FC = () => {
           
 
         await api.post('/password/reset', {
-          password: data.password,
-          password_confirmation: data.password_confirmation,
+          password,
+          password_confirmation,
           token
         });
 
