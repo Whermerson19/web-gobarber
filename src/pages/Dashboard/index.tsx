@@ -68,7 +68,9 @@ const Dashboard: React.FC = () => {
             setMonthAvailability(response.data)
         });
 
-    }, [currentMonth, user.id]);
+        console.log(user.avatar_url)
+
+    }, [currentMonth, user.id, user.avatar_url]);
 
     useEffect(() => {
         api.get<IAppointment[]>('appointments/me', {
@@ -87,7 +89,7 @@ const Dashboard: React.FC = () => {
 
             setAppointments(appointmentsFormatted);
         });
-    }, [selectedDate, appointments])
+    }, [selectedDate])
 
     const disabledDays = useMemo(() => {
         const dates = monthAvailability.filter(monthDay => monthDay.available === false)
